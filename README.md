@@ -141,8 +141,7 @@ This solution helps professionals:
 
 | Resource | Link |
 |----------|------|
-| 🌐 Live Demo |https://rousing-cogni-flow-core.base44.app/ |
-
+| 🌐 Live Demo |https://cogni-flow-aid-35.lovable.app|
 ---
 
 ## Author 👨‍💻
