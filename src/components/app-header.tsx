@@ -40,13 +40,6 @@ export function AppHeader() {
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Link to="/profile" className="hidden md:inline-flex">
-            <Button variant="ghost" size="sm" className="gap-2"><UserIcon className="h-4 w-4" /> Profile</Button>
-          </Link>
-        </DropdownMenuTrigger>
-      </DropdownMenu>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
           <button className="flex items-center gap-2 rounded-full pl-1 pr-3 py-1 hover:bg-accent">
             <Avatar className="h-7 w-7">
               <AvatarFallback className="text-[11px] gradient-primary text-primary-foreground">
@@ -63,7 +56,7 @@ export function AppHeader() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
-            <Link to="/settings"><UserIcon className="h-4 w-4 mr-2" /> Profile</Link>
+            <Link to="/profile"><UserIcon className="h-4 w-4 mr-2" /> Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link to="/settings"><SettingsIcon className="h-4 w-4 mr-2" /> Settings</Link>
