@@ -10,6 +10,8 @@ import {
 import { useTheme } from "@/lib/theme";
 import { useAuth } from "@/lib/auth";
 import { ResponsibleAIDialog } from "@/components/responsible-ai";
+import { MoodSwitcher } from "@/components/mood-switcher";
+import { SoundDock } from "@/components/sound-dock";
 
 export function AppHeader() {
   const { theme, toggle } = useTheme();
@@ -26,6 +28,8 @@ export function AppHeader() {
     <header className="h-14 border-b border-border flex items-center px-3 gap-2 bg-background/60 backdrop-blur sticky top-0 z-30">
       <SidebarTrigger />
       <div className="flex-1" />
+      <MoodSwitcher />
+      <SoundDock />
       <ResponsibleAIDialog>
         <Button variant="ghost" size="sm" className="gap-2">
           <Shield className="h-4 w-4" /> <span className="hidden sm:inline">Responsible AI</span>
@@ -34,6 +38,13 @@ export function AppHeader() {
       <Button variant="ghost" size="icon" onClick={toggle} aria-label="Toggle theme">
         {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Link to="/profile" className="hidden md:inline-flex">
+            <Button variant="ghost" size="sm" className="gap-2"><UserIcon className="h-4 w-4" /> Profile</Button>
+          </Link>
+        </DropdownMenuTrigger>
+      </DropdownMenu>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="flex items-center gap-2 rounded-full pl-1 pr-3 py-1 hover:bg-accent">
