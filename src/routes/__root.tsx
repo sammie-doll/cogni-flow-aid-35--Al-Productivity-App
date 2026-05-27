@@ -4,6 +4,8 @@ import {
 } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/lib/theme";
+import { MoodProvider } from "@/lib/mood";
+import { SoundProvider } from "@/lib/sound";
 import { AuthProvider } from "@/lib/auth";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -87,10 +89,14 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <AuthProvider>
-          <Outlet />
-          <Toaster position="top-right" richColors />
-        </AuthProvider>
+        <MoodProvider>
+          <SoundProvider>
+            <AuthProvider>
+              <Outlet />
+              <Toaster position="top-right" richColors />
+            </AuthProvider>
+          </SoundProvider>
+        </MoodProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

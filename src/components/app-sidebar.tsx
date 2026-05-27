@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard, Mail, FileText, ListChecks, Search, MessageSquare,
   FolderOpen, Bookmark, FileBarChart, BarChart3, Settings, LifeBuoy, Sparkles,
+  Trophy, Calendar, Music2, User,
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
@@ -22,6 +23,13 @@ const workspace = [
   { title: "Saved Work", url: "/saved", icon: Bookmark },
   { title: "Weekly Reports", url: "/reports", icon: FileBarChart },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
+];
+
+const personal = [
+  { title: "Profile", url: "/profile", icon: User },
+  { title: "Monthly Insights", url: "/insights", icon: Calendar },
+  { title: "Achievements", url: "/achievements", icon: Trophy },
+  { title: "Music & Sound", url: "/music", icon: Music2 },
 ];
 
 const account = [
@@ -73,6 +81,7 @@ export function AppSidebar() {
       <SidebarContent>
         {renderGroup("Workspace", items)}
         {renderGroup("Library", workspace)}
+        {renderGroup("You", personal)}
         {renderGroup("Account", account)}
       </SidebarContent>
     </Sidebar>

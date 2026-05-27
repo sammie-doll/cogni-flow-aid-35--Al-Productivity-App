@@ -18,14 +18,18 @@ import { Route as AppSettingsRouteImport } from './routes/_app/settings'
 import { Route as AppSavedRouteImport } from './routes/_app/saved'
 import { Route as AppResearchRouteImport } from './routes/_app/research'
 import { Route as AppReportsRouteImport } from './routes/_app/reports'
+import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppPlannerRouteImport } from './routes/_app/planner'
+import { Route as AppMusicRouteImport } from './routes/_app/music'
 import { Route as AppMeetingsRouteImport } from './routes/_app/meetings'
+import { Route as AppInsightsRouteImport } from './routes/_app/insights'
 import { Route as AppHelpRouteImport } from './routes/_app/help'
 import { Route as AppEmailRouteImport } from './routes/_app/email'
 import { Route as AppDocumentsRouteImport } from './routes/_app/documents'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
 import { Route as AppChatRouteImport } from './routes/_app/chat'
 import { Route as AppAnalyticsRouteImport } from './routes/_app/analytics'
+import { Route as AppAchievementsRouteImport } from './routes/_app/achievements'
 
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
@@ -71,14 +75,29 @@ const AppReportsRoute = AppReportsRouteImport.update({
   path: '/reports',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppPlannerRoute = AppPlannerRouteImport.update({
   id: '/planner',
   path: '/planner',
   getParentRoute: () => AppRoute,
 } as any)
+const AppMusicRoute = AppMusicRouteImport.update({
+  id: '/music',
+  path: '/music',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppMeetingsRoute = AppMeetingsRouteImport.update({
   id: '/meetings',
   path: '/meetings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInsightsRoute = AppInsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
   getParentRoute: () => AppRoute,
 } as any)
 const AppHelpRoute = AppHelpRouteImport.update({
@@ -111,20 +130,29 @@ const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAchievementsRoute = AppAchievementsRouteImport.update({
+  id: '/achievements',
+  path: '/achievements',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
+  '/achievements': typeof AppAchievementsRoute
   '/analytics': typeof AppAnalyticsRoute
   '/chat': typeof AppChatRoute
   '/dashboard': typeof AppDashboardRoute
   '/documents': typeof AppDocumentsRoute
   '/email': typeof AppEmailRoute
   '/help': typeof AppHelpRoute
+  '/insights': typeof AppInsightsRoute
   '/meetings': typeof AppMeetingsRoute
+  '/music': typeof AppMusicRoute
   '/planner': typeof AppPlannerRoute
+  '/profile': typeof AppProfileRoute
   '/reports': typeof AppReportsRoute
   '/research': typeof AppResearchRoute
   '/saved': typeof AppSavedRoute
@@ -135,14 +163,18 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
+  '/achievements': typeof AppAchievementsRoute
   '/analytics': typeof AppAnalyticsRoute
   '/chat': typeof AppChatRoute
   '/dashboard': typeof AppDashboardRoute
   '/documents': typeof AppDocumentsRoute
   '/email': typeof AppEmailRoute
   '/help': typeof AppHelpRoute
+  '/insights': typeof AppInsightsRoute
   '/meetings': typeof AppMeetingsRoute
+  '/music': typeof AppMusicRoute
   '/planner': typeof AppPlannerRoute
+  '/profile': typeof AppProfileRoute
   '/reports': typeof AppReportsRoute
   '/research': typeof AppResearchRoute
   '/saved': typeof AppSavedRoute
@@ -155,14 +187,18 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/signup': typeof SignupRoute
+  '/_app/achievements': typeof AppAchievementsRoute
   '/_app/analytics': typeof AppAnalyticsRoute
   '/_app/chat': typeof AppChatRoute
   '/_app/dashboard': typeof AppDashboardRoute
   '/_app/documents': typeof AppDocumentsRoute
   '/_app/email': typeof AppEmailRoute
   '/_app/help': typeof AppHelpRoute
+  '/_app/insights': typeof AppInsightsRoute
   '/_app/meetings': typeof AppMeetingsRoute
+  '/_app/music': typeof AppMusicRoute
   '/_app/planner': typeof AppPlannerRoute
+  '/_app/profile': typeof AppProfileRoute
   '/_app/reports': typeof AppReportsRoute
   '/_app/research': typeof AppResearchRoute
   '/_app/saved': typeof AppSavedRoute
@@ -175,14 +211,18 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/signup'
+    | '/achievements'
     | '/analytics'
     | '/chat'
     | '/dashboard'
     | '/documents'
     | '/email'
     | '/help'
+    | '/insights'
     | '/meetings'
+    | '/music'
     | '/planner'
+    | '/profile'
     | '/reports'
     | '/research'
     | '/saved'
@@ -193,14 +233,18 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/signup'
+    | '/achievements'
     | '/analytics'
     | '/chat'
     | '/dashboard'
     | '/documents'
     | '/email'
     | '/help'
+    | '/insights'
     | '/meetings'
+    | '/music'
     | '/planner'
+    | '/profile'
     | '/reports'
     | '/research'
     | '/saved'
@@ -212,14 +256,18 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/signup'
+    | '/_app/achievements'
     | '/_app/analytics'
     | '/_app/chat'
     | '/_app/dashboard'
     | '/_app/documents'
     | '/_app/email'
     | '/_app/help'
+    | '/_app/insights'
     | '/_app/meetings'
+    | '/_app/music'
     | '/_app/planner'
+    | '/_app/profile'
     | '/_app/reports'
     | '/_app/research'
     | '/_app/saved'
@@ -299,6 +347,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppReportsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/profile': {
+      id: '/_app/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/planner': {
       id: '/_app/planner'
       path: '/planner'
@@ -306,11 +361,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPlannerRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/music': {
+      id: '/_app/music'
+      path: '/music'
+      fullPath: '/music'
+      preLoaderRoute: typeof AppMusicRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/meetings': {
       id: '/_app/meetings'
       path: '/meetings'
       fullPath: '/meetings'
       preLoaderRoute: typeof AppMeetingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/insights': {
+      id: '/_app/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof AppInsightsRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/help': {
@@ -355,18 +424,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAnalyticsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/achievements': {
+      id: '/_app/achievements'
+      path: '/achievements'
+      fullPath: '/achievements'
+      preLoaderRoute: typeof AppAchievementsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAchievementsRoute: typeof AppAchievementsRoute
   AppAnalyticsRoute: typeof AppAnalyticsRoute
   AppChatRoute: typeof AppChatRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppDocumentsRoute: typeof AppDocumentsRoute
   AppEmailRoute: typeof AppEmailRoute
   AppHelpRoute: typeof AppHelpRoute
+  AppInsightsRoute: typeof AppInsightsRoute
   AppMeetingsRoute: typeof AppMeetingsRoute
+  AppMusicRoute: typeof AppMusicRoute
   AppPlannerRoute: typeof AppPlannerRoute
+  AppProfileRoute: typeof AppProfileRoute
   AppReportsRoute: typeof AppReportsRoute
   AppResearchRoute: typeof AppResearchRoute
   AppSavedRoute: typeof AppSavedRoute
@@ -374,14 +454,18 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAchievementsRoute: AppAchievementsRoute,
   AppAnalyticsRoute: AppAnalyticsRoute,
   AppChatRoute: AppChatRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppDocumentsRoute: AppDocumentsRoute,
   AppEmailRoute: AppEmailRoute,
   AppHelpRoute: AppHelpRoute,
+  AppInsightsRoute: AppInsightsRoute,
   AppMeetingsRoute: AppMeetingsRoute,
+  AppMusicRoute: AppMusicRoute,
   AppPlannerRoute: AppPlannerRoute,
+  AppProfileRoute: AppProfileRoute,
   AppReportsRoute: AppReportsRoute,
   AppResearchRoute: AppResearchRoute,
   AppSavedRoute: AppSavedRoute,
@@ -400,3 +484,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

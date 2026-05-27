@@ -10,6 +10,8 @@ import {
 import { useTheme } from "@/lib/theme";
 import { useAuth } from "@/lib/auth";
 import { ResponsibleAIDialog } from "@/components/responsible-ai";
+import { MoodSwitcher } from "@/components/mood-switcher";
+import { SoundDock } from "@/components/sound-dock";
 
 export function AppHeader() {
   const { theme, toggle } = useTheme();
@@ -26,6 +28,8 @@ export function AppHeader() {
     <header className="h-14 border-b border-border flex items-center px-3 gap-2 bg-background/60 backdrop-blur sticky top-0 z-30">
       <SidebarTrigger />
       <div className="flex-1" />
+      <MoodSwitcher />
+      <SoundDock />
       <ResponsibleAIDialog>
         <Button variant="ghost" size="sm" className="gap-2">
           <Shield className="h-4 w-4" /> <span className="hidden sm:inline">Responsible AI</span>
@@ -52,7 +56,7 @@ export function AppHeader() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
-            <Link to="/settings"><UserIcon className="h-4 w-4 mr-2" /> Profile</Link>
+            <Link to="/profile"><UserIcon className="h-4 w-4 mr-2" /> Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link to="/settings"><SettingsIcon className="h-4 w-4 mr-2" /> Settings</Link>
